@@ -1,0 +1,17 @@
+package com.reddev.logicielbackend.repository;
+
+import com.reddev.logicielbackend.model.course.Course;
+import com.reddev.logicielbackend.model.student.StudentCourse;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+import java.util.UUID;
+
+@Repository
+@Transactional(readOnly = true)
+public interface CourseRepository extends JpaRepository<Course, UUID> {
+    Optional<Course> findByCourseCodeAndCourseName(String courseCode, String courseName);
+
+}
